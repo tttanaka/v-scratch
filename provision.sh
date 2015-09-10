@@ -62,6 +62,7 @@ echo "----------------------------"
 echo "--- Enabling mod_rewrite ---"
 echo "----------------------------"
 sudo a2enmod rewrite
+sudo php5enmod mcrypt
 
 echo "----------------------"
 echo "--- Turn on errors ---"
