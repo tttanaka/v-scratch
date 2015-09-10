@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.33.10"
 
   # Add domain to etc/hosts
-  config.vm.hostname "local.dev"
+  config.vm.hostname = "local.dev"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
