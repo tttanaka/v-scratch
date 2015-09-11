@@ -2,12 +2,12 @@
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='root'
-PROJECTFOLDER='bedrock/web'
+PROJECTFOLDER=''
 
 echo "-------------------------------"
 echo "--- Creating Project Folder ---"
 echo "-------------------------------"
-sudo mkdir "/var/www"
+sudo mkdir "/var/www/project"
 
 echo "------------------------"
 echo "--- Update / Upgrade ---"
