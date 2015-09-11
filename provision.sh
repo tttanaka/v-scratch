@@ -2,6 +2,7 @@
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='root'
+PROJECTFOLDER='bedrock/web'
 
 echo "-------------------------------"
 echo "--- Creating Project Folder ---"
@@ -48,8 +49,8 @@ echo "--- Setup Hosts ---"
 echo "-----------------------------------"
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
-    DocumentRoot "/var/www"
-    <Directory "/var/www">
+    DocumentRoot "/var/www/project/$PROJECTFOLDER"
+    <Directory "/var/www/project/$PROJECTFOLDER">
         AllowOverride All
         Require all granted
     </Directory>
