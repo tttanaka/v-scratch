@@ -2,12 +2,12 @@
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='root'
-PROJECTFOLDER=''
+PROJECTFOLDER='project'
 
 echo "-------------------------------"
 echo "--- Creating Project Folder ---"
 echo "-------------------------------"
-sudo mkdir "/var/www/project"
+sudo mkdir -p "/var/www/$PROJECTFOLDER"
 
 echo "------------------------"
 echo "--- Update / Upgrade ---"
@@ -49,8 +49,8 @@ echo "--- Setup Hosts ---"
 echo "-----------------------------------"
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
-    DocumentRoot "/var/www/project/$PROJECTFOLDER"
-    <Directory "/var/www/project/$PROJECTFOLDER">
+    DocumentRoot "/var/www/$PROJECTFOLDER"
+    <Directory "/var/www/$PROJECTFOLDER">
         AllowOverride All
         Require all granted
     </Directory>
@@ -78,16 +78,30 @@ echo "--- Restarting Apache: ---"
 echo "--------------------------"
 sudo service apache2 restart
 
+sudo apt-get update
+sudo apt-get install -y python-software-properties python g++ make
+sudo apt-get update
+
 echo "-----------------------------"
-echo "--- Installing Ruby 1.9.3 ---"
+echo "--- Installing Ruby 2.2.3 ---"
 echo "-----------------------------"
 sudo apt-get update
-sudo apt-get install -y ruby1.9.3
+curl -sSL https://get.rvm.io | bash
+echo "source /etc/profile.d/rvm.sh" >> .bashrc
+source /etc/profile.d/rvm.sh
+sudo apt-get install -y ruby1.9.1-dev
+#sudo apt-get install -y ruby2.2.3-dev
+rvm install 1.9.3-dev
+rvm install 2.2.3-dev
+rvm use 2.2.3
+
 
 echo "-----------------------"
 echo "--- Installing Gems ---"
 echo "-----------------------"
-sudo gem install wordmove
+sudo apt-get update
+# dont use sudo when working with RVM gems
+gem install wordmove
 
 echo "-----------------------"
 echo "--- Installing Git: ---"
@@ -99,7 +113,6 @@ echo "--------------------------"
 echo "--- Installing Node ---"
 echo "--------------------------"
 sudo apt-get update
-sudo apt-get install -y python-software-properties python g++ make
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install -y nodejs
