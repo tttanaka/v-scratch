@@ -85,6 +85,11 @@ sudo apt-get update
 sudo apt-get install -y ruby1.9.3
 
 echo "-----------------------"
+echo "--- Installing Gems ---"
+echo "-----------------------"
+sudo gem install wordmove
+
+echo "-----------------------"
 echo "--- Installing Git: ---"
 echo "-----------------------"
 sudo apt-get update
@@ -98,6 +103,12 @@ sudo apt-get install -y python-software-properties python g++ make
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install -y nodejs
+
+# installed on Ubuntu by default
+# echo "--------------------------"
+# echo "--- Installing RSync ---"
+# echo "--------------------------"
+# sudo apt-get install -y rsync
 
 echo "----------------------------"
 echo "--- Installing Composer: ---"
