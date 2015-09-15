@@ -89,19 +89,18 @@ sudo apt-get update
 curl -sSL https://get.rvm.io | bash
 echo "source /etc/profile.d/rvm.sh" >> .bashrc
 source /etc/profile.d/rvm.sh
-sudo apt-get install -y ruby1.9.1-dev
-#sudo apt-get install -y ruby2.2.3-dev
+# sudo apt-get install -y ruby1.9.1-dev
+# sudo apt-get install -y ruby2.2.3-dev
 rvm install 1.9.3-dev
 rvm install 2.2.3-dev
 rvm use 2.2.3
 
-
-echo "-----------------------"
-echo "--- Installing Gems ---"
-echo "-----------------------"
-sudo apt-get update
+# echo "-----------------------"
+# echo "--- Installing Gems ---"
+# echo "-----------------------"
+# sudo apt-get update
 # dont use sudo when working with RVM gems
-gem install wordmove
+# gem install wordmove
 
 echo "-----------------------"
 echo "--- Installing Git: ---"
